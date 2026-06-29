@@ -12,20 +12,22 @@
   #confetti-canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
 
   /* TAB BAR */
-  .tab-bar { position:sticky; top:0; z-index:100; display:flex; background:#0a0a0a; border-bottom:3px solid var(--yellow); }
-  .tab-btn { flex:1; padding:12px 4px; background:none; border:none; color:#666; font-family:'Bangers',cursive; font-size:clamp(0.7rem,2vw,0.95rem); letter-spacing:1px; cursor:pointer; border-bottom:4px solid transparent; margin-bottom:-3px; transition:color 0.2s; position:relative; }
+  .tab-bar { position:sticky; top:0; z-index:100; display:flex; background:#0a0a0a; border-bottom:3px solid var(--yellow); padding:6px 4px 0; }
+  .tab-btn { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:10px 4px 12px; background:none; border:none; color:#555; cursor:pointer; border-bottom:4px solid transparent; margin-bottom:-3px; transition:color 0.2s; position:relative; }
   .tab-btn.active { color:var(--yellow); border-bottom-color:var(--yellow); }
   .tab-btn.sposa-tab.active { color:var(--pink); border-bottom-color:var(--pink); }
-  .tab-btn:hover:not(.active) { color:#aaa; }
-  .notif-dot { position:absolute; top:8px; right:calc(50% - 16px); width:8px; height:8px; background:var(--red); border-radius:50%; display:none; animation:pulse-dot 1.5s infinite; }
+  .tab-btn:hover:not(.active) { color:#888; }
+  .tab-icon { font-size:1.6rem; line-height:1; }
+  .tab-label { font-family:'Bangers',cursive; font-size:clamp(0.6rem,1.8vw,0.8rem); letter-spacing:1px; line-height:1; }
+  .notif-dot { position:absolute; top:8px; right:calc(50% - 20px); width:9px; height:9px; background:var(--red); border-radius:50%; border:2px solid #0a0a0a; display:none; animation:pulse-dot 1.5s infinite; }
   .notif-dot.visible { display:block; }
-  @keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.7} }
+  @keyframes pulse-dot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.4)} }
 
   .tab-panel { display:none; position:relative; z-index:1; }
   .tab-panel.active { display:block; }
 
   /* HERO */
-  .hero { display:flex; flex-direction:column; align-items:center; padding:40px 24px 56px; text-align:center; overflow:hidden; }
+  .hero { display:flex; flex-direction:column; align-items:center; padding:40px 24px 20px; text-align:center; overflow:hidden; }
   .banner { display:inline-block; background:var(--red); color:var(--yellow); font-family:'Bangers',cursive; font-size:clamp(2.2rem,8vw,5rem); letter-spacing:4px; padding:12px 36px; transform:rotate(-2deg); box-shadow:6px 6px 0 var(--yellow); margin-bottom:36px; line-height:1.1; opacity:0; animation:bannerBounce 0.8s cubic-bezier(0.36,0.07,0.19,0.97) 0.2s forwards; }
   @keyframes bannerBounce { 0%{opacity:0;transform:rotate(-2deg) scale(0.3) translateY(-40px)} 60%{opacity:1;transform:rotate(-2deg) scale(1.08) translateY(8px)} 80%{transform:rotate(-2deg) scale(0.96) translateY(-4px)} 100%{opacity:1;transform:rotate(-2deg) scale(1) translateY(0)} }
   .photo-frame-wrap { perspective:600px; }
@@ -34,6 +36,19 @@
   .photo-frame img { width:100%; height:100%; object-fit:cover; object-position:center 15%; display:block; }
   .sticker { position:absolute; bottom:-18px; right:-18px; width:86px; height:86px; background:var(--yellow); color:var(--black); border-radius:50%; display:flex; align-items:center; justify-content:center; text-align:center; font-family:'Bangers',cursive; font-size:0.9rem; letter-spacing:1px; line-height:1.2; transform:rotate(12deg); box-shadow:0 0 0 3px var(--red); animation:stickerSpin 0.5s ease 1.3s both; }
   @keyframes stickerSpin { from{opacity:0;transform:rotate(40deg) scale(0)} to{opacity:1;transform:rotate(12deg) scale(1)} }
+
+  /* COUNTDOWN */
+  .countdown-wrap { margin:48px auto 20px; text-align:center; width:100%; max-width:500px; padding:0 16px; }
+  .countdown-label { font-family:'Bangers',cursive; font-size:clamp(1rem,3vw,1.3rem); color:#aaa; letter-spacing:2px; margin-bottom:16px; }
+  .countdown-grid { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+  .countdown-block { background:var(--card); border:2px solid var(--yellow); border-radius:12px; padding:14px 10px 10px; min-width:68px; text-align:center; box-shadow:4px 4px 0 var(--yellow); }
+  .countdown-number { font-family:'Bangers',cursive; font-size:clamp(2rem,8vw,3.2rem); color:var(--yellow); line-height:1; display:block; }
+  .countdown-unit { font-size:0.65rem; color:#777; letter-spacing:2px; text-transform:uppercase; margin-top:5px; display:block; }
+  .separator { font-family:'Bangers',cursive; font-size:2.5rem; color:var(--red); align-self:center; margin-bottom:18px; opacity:0.7; }
+  .countdown-msg { font-family:'Bangers',cursive; font-size:clamp(0.95rem,3vw,1.3rem); color:var(--red); letter-spacing:2px; margin-top:6px; animation:blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  @keyframes flip { 0%{transform:rotateX(0)} 50%{transform:rotateX(90deg)} 100%{transform:rotateX(0)} }
+  .flip { animation:flip 0.3s ease; }
 
   /* SECTION TITLE */
   .section-title { font-family:'Bangers',cursive; font-size:clamp(1.8rem,5vw,2.8rem); color:var(--yellow); letter-spacing:3px; text-align:center; margin-bottom:6px; }
@@ -78,8 +93,6 @@
   .gallery-card.new { animation:cardPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
   .empty-gallery { text-align:center; color:#444; font-size:0.9rem; padding:32px; max-width:580px; margin:0 auto; }
   .loading-msg { text-align:center; color:#555; font-size:0.85rem; padding:20px; }
-
-  /* commento sposa */
   .sposa-comment-box { background:#1a0a12; border:1px solid var(--pink); border-radius:8px; padding:8px 10px; margin-top:4px; }
   .sposa-comment-label { font-size:0.65rem; color:var(--pink); font-weight:900; margin-bottom:3px; }
   .sposa-comment-text { font-size:0.78rem; color:#ffb3d9; line-height:1.4; }
@@ -113,7 +126,7 @@
   .progress-bar-fill { height:100%; width:0%; background:var(--yellow); border-radius:3px; transition:width 0.1s linear; }
   .time-label { font-size:0.7rem; color:#777; font-family:monospace; }
 
-  /* CHAT SPOSA */
+  /* CHAT */
   .chat-panel { padding:24px 16px 140px; max-width:600px; margin:0 auto; }
   .sposa-mode-banner { background:#2a0a1a; border:1px solid var(--pink); border-radius:8px; padding:10px 14px; text-align:center; font-size:0.85rem; color:var(--pink); margin-bottom:16px; display:none; }
   .sposa-mode-banner.visible { display:block; }
@@ -128,7 +141,6 @@
   .msg-sposa .msg-time { text-align:right; }
   @keyframes msgSlide { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
   .msg.new { animation:msgSlide 0.3s ease forwards; }
-
   .chat-input-area { position:fixed; bottom:0; left:0; right:0; background:#0a0a0a; border-top:2px solid #222; padding:12px 16px; z-index:50; }
   .chat-input-inner { max-width:600px; margin:0 auto; }
   .chat-name-row { display:flex; gap:8px; margin-bottom:8px; }
@@ -162,13 +174,23 @@
 <canvas id="confetti-canvas"></canvas>
 
 <div class="tab-bar">
-  <button class="tab-btn active" onclick="switchTab('hero',this)">💒 El Praino</button>
+  <button class="tab-btn active" onclick="switchTab('hero',this)">
+    <span class="tab-icon">💒</span>
+    <span class="tab-label">El Praino</span>
+  </button>
   <button class="tab-btn" onclick="switchTab('foto',this)" id="fotoTabBtn">
-    📸 Scatta!
+    <span class="tab-icon">📸</span>
+    <span class="tab-label">Scatta!</span>
     <span class="notif-dot" id="notifDot"></span>
   </button>
-  <button class="tab-btn sposa-tab" onclick="switchTab('chat',this)">💍 Sposa</button>
-  <button class="tab-btn" onclick="switchTab('audio',this)">🦪 Perle</button>
+  <button class="tab-btn sposa-tab" onclick="switchTab('chat',this)">
+    <span class="tab-icon">💍</span>
+    <span class="tab-label">Scrivi alla Sposa</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('audio',this)">
+    <span class="tab-icon">🦪</span>
+    <span class="tab-label">Le Perle</span>
+  </button>
 </div>
 
 <!-- TAB 1: HERO -->
@@ -182,6 +204,20 @@
       </div>
     </div>
   </section>
+
+  <div class="countdown-wrap">
+    <div class="countdown-label">⏳ Alla fine della libertà mancano...</div>
+    <div class="countdown-grid">
+      <div class="countdown-block"><span class="countdown-number" id="days">--</span><span class="countdown-unit">Giorni</span></div>
+      <div class="separator">:</div>
+      <div class="countdown-block"><span class="countdown-number" id="hours">--</span><span class="countdown-unit">Ore</span></div>
+      <div class="separator">:</div>
+      <div class="countdown-block"><span class="countdown-number" id="minutes">--</span><span class="countdown-unit">Minuti</span></div>
+      <div class="separator">:</div>
+      <div class="countdown-block"><span class="countdown-number" id="seconds">--</span><span class="countdown-unit">Secondi</span></div>
+    </div>
+    <div class="countdown-msg" id="countdownMsg">☠️ Corri finché puoi, Praino!</div>
+  </div>
   <footer>Fatto con ❤️ (e tanto materiale compromettente) dagli amici di El Praino</footer>
 </div>
 
@@ -212,14 +248,12 @@
   </div>
 </div>
 
-<!-- TAB 3: CHAT SPOSA -->
+<!-- TAB 3: CHAT -->
 <div class="tab-panel" id="tab-chat">
   <div class="chat-panel">
-    <h2 class="section-title pink">💍 Chat con la Sposa</h2>
+    <h2 class="section-title pink">💍 Scrivi alla Sposa</h2>
     <p class="section-sub">Scrivi alla sposa — lei risponde in diretta!</p>
-    <div class="sposa-mode-banner" id="sposaBanner">
-      👑 Sei entrata come Sposa! I tuoi messaggi sono evidenziati 💍
-    </div>
+    <div class="sposa-mode-banner" id="sposaBanner">👑 Sei entrata come Sposa! I tuoi messaggi sono evidenziati 💍</div>
     <div class="chat-messages" id="chatMessages"></div>
   </div>
   <div class="chat-input-area">
@@ -245,7 +279,7 @@
   </div>
 </div>
 
-<!-- MODAL PASSWORD -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
     <div class="modal-title">👑 Accesso Sposa</div>
@@ -272,12 +306,10 @@
   });
   const db = getFirestore(app);
 
-  /* ── FOTO: realtime ── */
   const fotoQ = query(collection(db,"foto"), orderBy("timestamp","desc"));
   onSnapshot(fotoQ, snap => {
     const gallery = document.getElementById("gallery");
-    const loadingMsg = document.getElementById("loadingMsg");
-    loadingMsg.style.display = "none";
+    document.getElementById("loadingMsg").style.display = "none";
     gallery.innerHTML = "";
     if (snap.empty) { gallery.innerHTML = '<div class="empty-gallery">📭 Ancora nessuna foto... sii il primo!</div>'; return; }
     snap.forEach(d => {
@@ -305,7 +337,6 @@
     }
   });
 
-  /* ── PUBBLICA FOTO ── */
   window.submitPhoto = async function() {
     const imgSrc = document.getElementById("previewImg").src;
     const comment = document.getElementById("commentInput").value.trim();
@@ -324,7 +355,6 @@
     btn.disabled = false; btn.textContent = "🚀 PUBBLICA!";
   };
 
-  /* ── COMMENTO SPOSA SU FOTO ── */
   window.addSposaComment = async function(docId) {
     if (!window.isSposa) return;
     const input = document.getElementById("sposa-input-"+docId);
@@ -334,7 +364,6 @@
     } catch(e) { alert("❌ Errore: "+e.message); }
   };
 
-  /* ── CHAT: realtime ── */
   const chatQ = query(collection(db,"chat"), orderBy("timestamp","asc"));
   onSnapshot(chatQ, snap => {
     const container = document.getElementById("chatMessages");
@@ -352,7 +381,6 @@
     if (wasAtBottom) container.scrollTop = container.scrollHeight;
   });
 
-  /* ── INVIA MESSAGGIO ── */
   window.sendMsg = async function() {
     const name = document.getElementById("chatName").value.trim() || "Anonimo";
     const text = document.getElementById("chatMsg").value.trim(); if (!text) return;
@@ -366,7 +394,6 @@
 <script>
   window.isSposa = false;
 
-  /* TABS */
   function switchTab(id, btn) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -376,7 +403,6 @@
     if (id==='chat') setTimeout(()=>{ const c=document.getElementById('chatMessages'); c.scrollTop=c.scrollHeight; },100);
   }
 
-  /* PARALLAX */
   window.addEventListener('scroll', () => {
     const frame = document.getElementById('photoFrame');
     if (!frame) return;
@@ -385,7 +411,6 @@
     frame.style.transform = `rotateX(${Math.max(-8,Math.min(8,cy*0.02))}deg)`;
   });
 
-  /* FILE */
   function handleFile(input) {
     const file = input.files[0]; if (!file) return;
     const reader = new FileReader();
@@ -395,8 +420,7 @@
         const c = document.createElement('canvas');
         const MAX=800; let w=img.width, h=img.height;
         if(w>h&&w>MAX){h=h*MAX/w;w=MAX;}else if(h>MAX){w=w*MAX/h;h=MAX;}
-        c.width=w; c.height=h;
-        c.getContext('2d').drawImage(img,0,0,w,h);
+        c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h);
         document.getElementById('previewImg').src=c.toDataURL('image/jpeg',0.7);
         document.getElementById('previewWrap').classList.add('visible');
       };
@@ -405,7 +429,6 @@
     reader.readAsDataURL(file);
   }
 
-  /* MODAL */
   function openModal() { document.getElementById('modalOverlay').classList.add('visible'); document.getElementById('pwdInput').value=''; document.getElementById('pwdError').style.display='none'; setTimeout(()=>document.getElementById('pwdInput').focus(),100); }
   function closeModal() { document.getElementById('modalOverlay').classList.remove('visible'); }
   function checkPwd() {
@@ -421,6 +444,26 @@
       document.getElementById('pwdInput').value='';
     }
   }
+
+  /* COUNTDOWN */
+  const wedding = new Date('2026-09-05T12:00:00');
+  const msgs = ["☠️ Corri finché puoi, Praino!","🕊️ La libertà sta per finire...","💍 Il conto alla rovescia è iniziato!","😂 Non c'è più scampo!","🏃 Fuggi finché sei in tempo!"];
+  let msgIdx = 0;
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function animateNum(el, newVal) {
+    const s = pad(newVal);
+    if (el.textContent !== s) { el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); el.textContent = s; }
+  }
+  function updateCountdown() {
+    const diff = wedding - new Date();
+    if (diff <= 0) { ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00'); document.getElementById('countdownMsg').textContent='💒 È il giorno del matrimonio!'; return; }
+    animateNum(document.getElementById('days'), Math.floor(diff/(1000*60*60*24)));
+    animateNum(document.getElementById('hours'), Math.floor((diff%(1000*60*60*24))/(1000*60*60)));
+    animateNum(document.getElementById('minutes'), Math.floor((diff%(1000*60*60))/(1000*60)));
+    animateNum(document.getElementById('seconds'), Math.floor((diff%(1000*60))/1000));
+  }
+  setInterval(()=>{ msgIdx=(msgIdx+1)%msgs.length; document.getElementById('countdownMsg').textContent=msgs[msgIdx]; },4000);
+  updateCountdown(); setInterval(updateCountdown,1000);
 
   /* AUDIO */
   const tracks = [
@@ -445,10 +488,7 @@
   tracks.forEach((t,i) => {
     const card = document.createElement('div');
     card.className='audio-card'; card.id='acard-'+i;
-    card.innerHTML=`
-      <div class="audio-label"><span>${t.emoji}</span>${t.label}
-        <div class="wave-wrap">${'<div class="wave-bar"></div>'.repeat(7)}</div>
-      </div>
+    card.innerHTML=`<div class="audio-label"><span>${t.emoji}</span>${t.label}<div class="wave-wrap">${'<div class="wave-bar"></div>'.repeat(7)}</div></div>
       <div class="player">
         <button class="play-btn" id="btn-${i}"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         <div class="progress-wrap">
@@ -457,13 +497,10 @@
         </div>
       </div>`;
     grid.appendChild(card);
-    const audio = new Audio(t.src);
-    audios.push(audio);
-    const fill=document.getElementById('fill-'+i);
-    const time=document.getElementById('time-'+i);
-    const btn=document.getElementById('btn-'+i);
+    const audio = new Audio(t.src); audios.push(audio);
+    const fill=document.getElementById('fill-'+i), time=document.getElementById('time-'+i), btn=document.getElementById('btn-'+i);
     const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
-    audio.addEventListener('loadedmetadata',()=>{time.textContent=`0:00 / ${fmt(audio.duration)}`;});
+    audio.addEventListener('loadedmetadata',()=>time.textContent=`0:00 / ${fmt(audio.duration)}`);
     audio.addEventListener('timeupdate',()=>{if(!audio.duration)return;fill.style.width=(audio.currentTime/audio.duration*100)+'%';time.textContent=`${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;;});
     audio.addEventListener('ended',()=>{card.classList.remove('playing');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';fill.style.width='0%';playingIdx=null;});
     document.getElementById('bg-'+i).addEventListener('click',e=>{if(!audio.duration)return;const r=e.currentTarget.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;});
